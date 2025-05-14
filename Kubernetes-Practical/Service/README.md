@@ -110,7 +110,7 @@ spec:
 
 ## Best Practices
 
-1. Always specify resource limits and requests for your services
+1. Always specify resource limits and requests for your workloads (Deployments/Pods)
 2. Use meaningful names and labels
 3. Document port mappings
 4. Use appropriate service type based on security requirements

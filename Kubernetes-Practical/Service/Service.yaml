@@ -81,5 +81,6 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-  type: Headless  
+  clusterIP: None
+  # Headless service: no proxy, direct pod endpoint access
 
