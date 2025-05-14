@@ -22,14 +22,13 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           runAsNonRoot: true
-
-
-### NodePort Service 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: nginx-service-nodeport
+  labels:
+    app: nginx
 spec:
   selector:
     app: nginx
@@ -38,9 +37,6 @@ spec:
     port: 80
     targetPort: 80
   type: NodePort
-
-
-### ClusterIP Service 
 ---
 apiVersion: v1
 kind: Service
@@ -54,9 +50,6 @@ spec:
     port: 80
     targetPort: 80
   type: ClusterIP
-
-
-### LoadBalancer Service 
 ---
 apiVersion: v1
 kind: Service
@@ -65,14 +58,11 @@ metadata:
 spec:
   selector:
     app: nginx
-ports:
-- protocol: TCP
-  port: 80
-  targetPort: 80
-type: LoadBalancer  
-
-
-### Headless Service 
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
 ---
 apiVersion: v1
 kind: Service
@@ -86,5 +76,3 @@ spec:
     port: 80
     targetPort: 80
   clusterIP: None
-  # Headless service: no proxy, direct pod endpoint access
-
